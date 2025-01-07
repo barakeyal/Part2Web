@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
-    <link rel="stylesheet" href="registration_style.css">
+    <link rel="stylesheet" href="registration_style.css"> <!-- חיבור לקובץ CSS -->
+    <script src="Registration.js" defer></script> <!-- חיבור לקובץ JS -->
 </head>
 <body>
     <main>
         <section class="registration-section">
-            <form action="#" method="POST">
+            <form action="#" method="POST" onsubmit="validateForm(event)">
                 <label for="first-name">שם פרטי *</label>
+                <span id="first-name-error" class="error-message"></span>
                 <input type="text" id="first-name" name="first-name" required>
 
                 <label for="last-name">שם משפחה *</label>
+                <span id="last-name-error" class="error-message"></span>
                 <input type="text" id="last-name" name="last-name" required>
 
                 <label for="nickname">כינוי</label>
+                <span id="nickname-error" class="error-message"></span>
                 <input type="text" id="nickname" name="nickname">
 
                 <label for="email">אימייל *</label>
+                <span id="email-error" class="error-message"></span>
                 <input type="email" id="email" name="email" required>
 
                 <label for="phone-number">מספר טלפון *</label>
+                <span id="phone-number-error" class="error-message"></span>
                 <input type="tel" id="phone-number" name="phone-number" required>
 
                 <label for="birth-date">יום הולדת *</label>
+                <span id="date-error" class="error-message"></span>
                 <div class="birth-date">
                     <input type="number" id="day" name="day" placeholder="יום" required>
                     <select id="month" name="month" required>
@@ -47,12 +54,8 @@
                 </div>
 
                 <button type="submit" class="btn-primary">צור חשבון</button>
-                <div class="action-buttons">
-                    <button type="button" class="btn-secondary">חשבון קיים</button>
-                    <button type="button" class="btn-secondary"> <a href="Welcome.html"> לעמוד ראשי </a></button>
-                </div>
             </form>
         </section>
     </main>
 </body>
-</htm
+</html>
