@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from utilities.db.db_manager import dbManager
 from utilities.db.db_manager import cluster
+from db_connector import create_workout
 
 
 
@@ -18,6 +19,7 @@ def index():
         training_type = request.args['training-type']
         training_date = request.args['training-date']
         training_time = request.args['training-time']
+        create_workout(training_type,training_date,training_time)
         return render_template('catalog.html',
         request_method = request_method,
         training_type = training_type,

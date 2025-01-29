@@ -35,8 +35,7 @@ def index():
             phone_number = phone_number,
             birth_day = birth_day,
             birth_month = birth_month,
-            birth_year = birth_year
-        ) 
+            birth_year = birth_year) 
     else:
         return render_template('profile.html')
 
