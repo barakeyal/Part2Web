@@ -18,12 +18,13 @@ def index():
         training_type = request.args['training-type']
         training_date = request.args['training-date']
         training_time = request.args['training-time']
-        pass
-    else:
-        pass
-
-    return render_template('catalog.html',
+        return render_template('catalog.html',
         request_method = request_method,
         training_type = training_type,
         training_date = training_date,
         training_time = training_time)
+        pass
+    else:
+        pass
+
+    return render_template('catalog.html')

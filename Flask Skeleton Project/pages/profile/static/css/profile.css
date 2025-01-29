@@ -284,6 +284,16 @@ header nav a {
     color: white;
     text-decoration: none;
 }
-span {
-    direction: ltr;
+.form-holder {
+    display: flex;
+}
+.signin-form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column; 
+}
+h2 {
+    padding-bottom: 5em;
 }

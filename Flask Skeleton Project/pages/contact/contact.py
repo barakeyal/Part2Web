@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
 from utilities.db.db_manager import dbManager
+from db_connector import create_contact
 
 # about blueprint definition
 contact = Blueprint(
@@ -9,20 +10,6 @@ contact = Blueprint(
     static_url_path='/contact',
     template_folder='templates'
 )
-
-import os
-import pymongo
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
-
-# get your uri from .env file
-uri = os.environ.get('DB_URI')
-# create cluster
-cluster = MongoClient('mongodb+srv://barakeyal100:sOcTBmPZ7lCAdBx0@web-project-cluster.uiphk.mongodb.net/', server_api=ServerApi('1'))
-
-# get all dbs and collestions that needed
-mydatabase = cluster['mydatabase']
-contact_col = mydatabase['contacts']
 
 
 # Routes
@@ -34,8 +21,7 @@ def index():
         phone_number = request.form['phone-number']
         email = request.form['email']
         message = request.form['message']
-        my_dict = {'Full_Name':full_name,'Phone_Number': phone_number, 'Email': email,'Message':message}
-        contact_col.insert_one(my_dict)
+        create_contact(full_name,phone_number,email,message)
         return render_template('contact.html',
             full_name = full_name,
             phone_number = phone_number,
