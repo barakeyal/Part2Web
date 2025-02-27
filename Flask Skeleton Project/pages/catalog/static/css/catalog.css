@@ -181,7 +181,7 @@ header nav a {
     margin-bottom: 10px; /* Add space between list items */
     border-radius: 5px; /* Rounded corners */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    text-align: left; /* Center align the text */
+    text-align: center; /* Center align the text */
     direction: ltr;
 }
 
@@ -190,3 +190,59 @@ header nav a {
     background-color: #e0e0e0; /* Slightly darker grey on hover */
     cursor: pointer; /* Change cursor to pointer */
 }
+
+.cancel {
+    size: 4rem;
+    border-radius: 15%;
+    border-color: rgb(193, 21, 21);
+    justify-content: center;
+    justify-items: center;
+}
+.cancel:hover {
+    background-color: white;
+    color: red;
+}
+.cancel-holder {
+   display: inline-flex;
+   justify-content: center;
+   justify-items: center;
+   background-color: #f4f4f4;
+   box-shadow: none;
+   border: none;
+}
+.cancel-holder:hover {
+    background-color: #e0e0e0; 
+    cursor: pointer; 
+}
+.cancel-holder {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: fit-content;  /* Ensures form is exactly the size of the button */
+    height: fit-content;
+}
+.update {
+    size: 4rem;
+    border-radius: 15%;
+    border-color: rgb(21, 27, 193);
+    justify-content: center;
+    justify-items: center;
+}
+.update:hover {
+    background-color: white;
+    color: rgb(64, 0, 255);
+}
+.update-select {
+    display: inline;
+}
+.container {
+    display:flex;
+}
+.container i{
+    justify-content: space-between;
+}
+.container span{
+    justify-content: space-between;
+}
+

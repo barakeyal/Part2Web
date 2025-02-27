@@ -1,8 +1,8 @@
 {#
 Base page variables:
 -- page_lang | default: 'en'
--- page_head_title_author | default: 'Barak Pinchovski'
--- page_head_title | default: 'Flask skeleton project'
+-- page_head_title_author | default: 'Group 18'
+-- page_head_title | default: 'My Gym'
 #}
 
 {#
@@ -69,9 +69,24 @@ Base page blocks:
                     <span>Your Gym</span>
                 </div>
                 <nav>
-                    <a href="/">Home</a>
+                   <a href="/">Home</a>
                 </nav>
-                <button class="login-btn"> <a href="/profile">הרשמה / כניסה לחשבון </a> </button>
+                <div>
+                    {% if session['Logged_in']%} 
+                    <form action="/sign_out" method="POST" class="sign-out-btn">
+                        <button type="submit" class="login-btn"> 
+                        יציאה
+                        </button>
+                    </form>
+                    {% else %}
+                    <button class="sign-up-btn"> 
+                        <a href="/signin">כניסה לחשבון  </a>
+                    </button>
+                    <button class="login-btn"> 
+                        <a href="/profile"> הרשמה</a>
+                    </button>
+                    {% endif%}
+                </div>
             </header>
             {% endblock %}
 
