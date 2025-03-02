@@ -4,7 +4,8 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask import session
 from flask import flash
-
+from datetime import datetime
+from datetime import date
 
 # get your uri from .env file
 uri = os.environ.get('mongodb+srv://barakeyal100:sOcTBmPZ7lCAdBx0@web-project-cluster.uiphk.mongodb.net/')
@@ -26,7 +27,6 @@ def create_user(first_name,last_name,nickname,email,phone_number,birth_day,birth
     user_col.insert_one(my_dict)
     session["Logged_in"] = True
     session["Email"] = email
-    #print(session["Logged_in"],session["Email"])
 
 ### Log in
 def sign_in(phone_number_in,email_in):
@@ -106,6 +106,17 @@ def isBooked(Wtime,Wdate):
 ## Counts how many people signed up for one specific workout
 def count_workouts(Wtype,Wtime,Wdate):
     return workouts_col.count_documents({'training_type':Wtype,'training_date':Wdate,'training_time':Wtime})
+
+## Deletes Past Workouts
+def del_past_workouts(Wtype,Wtime,Wdate):
+    date_format = '%Y-%m-%d'
+    now = str(datetime.today().date())
+    today = datetime.strptime(str(now), date_format) 
+
+    if today >= datetime.strptime(Wdate, date_format):
+        workouts_col.delete_one({'Email': session["Email"],'training_type':Wtype,
+        'training_date':Wdate,'training_time':Wtime})
+
 
 
 

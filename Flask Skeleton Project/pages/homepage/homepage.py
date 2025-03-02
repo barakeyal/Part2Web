@@ -3,6 +3,7 @@ from flask import render_template, redirect, url_for
 from db_connector import sign_out_user
 
 
+
 # homepage blueprint definition
 homepage = Blueprint(
     'homepage',

@@ -11,7 +11,7 @@
 <main>
     <h1>{{message}}</h1>
     <section class="booking-section">
-        <form action="/catalog" method="POST">
+        <form action="/catalog" method="POST" class="book-form">
             <div class="form-row">
                 <div class="form-group">
                     <label for="training-type">בחר את סוג האימון</label>
@@ -54,27 +54,33 @@
     <ul id="booked-workouts-list">
         {% for workout in workouts %}
         <li>
-            <form action="/catalog_cancel" method="POST" class="cancel-holder">
-                <div class="container">
-                <span class="dates"><strong><i class="fa-solid fa-trophy"></i>Type:</strong> {{ workout.get('training_type') }} </span>
-                <span><strong><i class="fa-regular fa-calendar-days"></i> Date:</strong> {{ workout.get('training_date') }} </span>
-                <span><strong><i class="fa-solid fa-clock"></i> Time:</strong> {{ workout.get('training_time') }}</span>
-                <span><strong><i class="fa-solid fa-person"></i> Spots Left:</strong> <span>{{ workout.get('people') }}/30</span></span>
-                </div>
-                {% set type = workout.get('training_type') %}
-                {% set date = workout.get('training_date') %}
-                {% set time = workout.get('training_time') %}
+            <div id="container">
+                <form action="/catalog_cancel" method="POST" class="cancel-holder">
+                        <span class="dates"><strong><i class="fa-solid fa-trophy"></i>Type:</strong> {{ workout.get('training_type') }} </span>
+                        <span><strong><i class="fa-regular fa-calendar-days"></i> Date:</strong> {{ workout.get('training_date') }} </span>
+                        <span><strong><i class="fa-solid fa-clock"></i> Time:</strong> {{ workout.get('training_time') }}</span>
+                        <span><strong><i class="fa-solid fa-person"></i> Spots Left:</strong> <span>{{ workout.get('people') }}/30</span>
+
+                    {% set type = workout.get('training_type') %}
+                    {% set date = workout.get('training_date') %}
+                    {% set time = workout.get('training_time') %}
         
-                <!-- Hidden inputs for workout details -->
-                <input type="hidden" name="training-type" value="{{ type }}">
-                <input type="hidden" name="training-date" value="{{ date }}">
-                <input type="hidden" name="training-time" value="{{ time }}">
-        
-                <!-- Cancel button to submit the form -->
-                <button type="submit" class="cancel">Cancel</button>    
-            </form>
-            <br>
-            <form action="/catalog_update" method="POST" class="cancel-holder update-holder">
+                    <!-- Hidden inputs for workout details -->
+                    <input type="hidden" name="training-type" value="{{ type }}">
+                    <input type="hidden" name="training-date" value="{{ date }}">
+                    <input type="hidden" name="training-time" value="{{ time }}">
+
+
+                    <!-- Cancel button to submit the form -->
+                     <span class="span-btn">
+                        <button type="submit" class="cancel">Cancel</button>   
+                    </span> 
+                </form>
+            </div>    
+
+            <button id="show-update" class="show-update" data-target="#update-form-div-{{ loop.index }}">Press Here to Update Time</button>
+            <div id="update-form-div-{{loop.index}}" class="Hide" class="update-form-div-class">
+            <form action="/catalog_update" method="POST" class="update-holder">
                 <input type="hidden" name="training-type" value="{{ type }}">
                 <input type="hidden" name="training-date" value="{{ date }}">
                 <input type="hidden" name="training-time" value="{{ time }}">
@@ -101,6 +107,7 @@
                 </div>
                 <button type="submit" class="update">Update Time</button>  
             </form>
+        </div>
         </li>
         {% endfor %}
     {% else %}

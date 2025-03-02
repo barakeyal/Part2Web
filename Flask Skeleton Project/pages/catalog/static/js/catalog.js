@@ -66,3 +66,21 @@ btn.addEventListener("mouseleave", (e) => {
 
 });
 
+const showUpdateForms = document.getElementsByClassName("show-update");
+
+Array.from(showUpdateForms).forEach((showUpdateForm) => {
+    showUpdateForm.addEventListener("click", (e) => {
+        // Get the target form using the data-target attribute
+        const targetDiv = document.querySelector(showUpdateForm.getAttribute("data-target"));
+
+        // Toggle the "Hide" class on the corresponding form div
+        targetDiv.classList.toggle("Hide");
+
+        // Update the button text based on the current state
+        if (showUpdateForm.innerText == "Press Here to Update Time") {
+            showUpdateForm.innerText = "Cancel Update";
+        } else {
+            showUpdateForm.innerText = "Press Here to Update Time";
+        }
+    });
+});
