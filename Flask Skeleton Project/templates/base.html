@@ -26,7 +26,6 @@ Base page blocks:
 ---- page_body_footer_content
 -- page_body_js
  #}
-<!DOCTYPE html>
  <html lang="{{ page_lang|default("en", true) }}">
     <head>
     {% block page_head %}
@@ -112,4 +111,13 @@ Base page blocks:
         <script src="{{ url_for('static', filename='js/base.js') }}"></script>
         {% block page_body_js %}{% endblock %}
     </body>
+    <footer>
+     <div class="container">
+        <div class="slogen"> The best coaches</div>
+        <div class="slogen"> The best facilities</div>
+        <div class="slogen"> The best treatment</div>
+     </div>
+    </footer>
+
 </html>
+
