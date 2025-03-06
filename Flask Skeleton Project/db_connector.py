@@ -118,6 +118,24 @@ def del_past_workouts(Wtype,Wtime,Wdate):
         'training_date':Wdate,'training_time':Wtime})
 
 
+##################### Prints all collections for Analyze.py
+
+def print_all(): ## Prints contacts
+
+    print("Contacts collections: ")
+    contacts_list = list(contact_col.find())
+    for contact in contacts_list:
+        print(contact)
+    
+    print("Users collections: ") ## Prints users
+    users_list = list(user_col.find())
+    for user in users_list:
+        print(user)
+    
+    print("Workouts collections: ") ## Prints workouts
+    workouts_list = list(workouts_col.find())
+    for workout in workouts_list :
+        print(workout)
 
 
 
